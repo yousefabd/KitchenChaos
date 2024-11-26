@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490dd31ed87292b4ba37609f097f7801, type: 3}
+  m_Name: CabbageRecipe
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 81a4cefba41e74843a374eb133a2d746, type: 2}
+  output: {fileID: 11400000, guid: 6ea76456b3b248b4192e556e018e80ed, type: 2}
+  maxBound: 5
