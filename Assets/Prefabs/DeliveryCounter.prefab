@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTop: {fileID: 1931451973161825705}
-  orderObj: {fileID: 11400000, guid: 24236686fef337740ba830eec2aea275, type: 2}
+  successfulRecipesDelivered: 0
 --- !u!1001 &8433777814665401491
 PrefabInstance:
   m_ObjectHideFlags: 0

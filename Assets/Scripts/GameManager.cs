@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     }
     public void TogglePause()
     {
+        Debug.Log("paused");
         paused = !paused;
         if (!paused)
         {
@@ -42,8 +43,8 @@ public class GameManager : MonoBehaviour
     }
     private float waitToStartCounter = 1f;
     private float countToStartCounter = 3f;
-    private float gamePlayingCounter = 60f;
-    private float gamePlayingCounterMax = 60f;
+    private float gamePlayingCounter = 80f;
+    private float gamePlayingCounterMax = 120f;
 
     public event EventHandler OnStateChanged;
     private void Update()
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour
                 if (gamePlayingCounter <= 0f)
                 {
                     state = State.GameOver;
+                    TogglePause();
                     OnStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;

@@ -6,11 +6,13 @@ using UnityEngine;
 public class TextCountDownUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI countDownText;
+    private Animator textAnimator;
+    private int currentTimerCeiled = 4;
 
     private void Start()
     {
         GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
-
+        textAnimator = countDownText.GetComponent<Animator>();
         gameObject.SetActive(false);
     }
 
@@ -20,6 +22,11 @@ public class TextCountDownUI : MonoBehaviour
     }
     private void Update()
     {
-        countDownText.text = Mathf.Ceil(GameManager.Instance.GetCountDownTimer()).ToString();
+        int timeCeiled = (int) Mathf.Ceil(GameManager.Instance.GetCountDownTimer());
+        if(timeCeiled != currentTimerCeiled) {
+            currentTimerCeiled = timeCeiled;
+            countDownText.text = currentTimerCeiled.ToString();
+            textAnimator.Play("CountDown",-1,0);
+        }
     }
 }

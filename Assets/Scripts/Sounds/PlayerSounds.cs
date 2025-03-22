@@ -13,7 +13,7 @@ public class PlayerSounds : MonoBehaviour
             currentwalkTimer = walkTimerMax;
             if (Player.Instance.IsWalking())
             {
-                SoundManager.Instance.PlayFootStepsSound(Player.Instance.transform.position, 1f);
+                SoundManager.Instance.PlayFootStepsSound(Player.Instance.transform.position);
             }
         }
     }

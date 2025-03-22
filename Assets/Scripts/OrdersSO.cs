@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu()]
-public class Orders : ScriptableObject 
+public class Orders : MonoBehaviour 
 {
     [SerializeField] private List<OrderSO> ordersList;
     private List<OrderSO> currentOrders;

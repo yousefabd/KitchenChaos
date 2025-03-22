@@ -7,9 +7,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClipRefsSO audioClips;
     public static SoundManager Instance { get; private set; }
 
+    private float soundVolume = 2.0f;
+    private readonly float soundVolumeMax = 4.0f;
     private void Awake()
     {
-        Instance = this; 
+        Instance = this;
+        soundVolume = PlayerPrefs.GetFloat("soundVolume", 2.0f);
+        PlayerPrefs.DeleteAll();
     }
     private void Start()
     {
@@ -50,17 +54,30 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClips.deliverySuccess, (sender as DeliveryCounter).transform.position);
     }
 
-    private void PlaySound(AudioClip[] audioClipsArray, Vector3 position, float volume = 2.0f)
+    private void PlaySound(AudioClip[] audioClipsArray, Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(audioClipsArray[Random.Range(0, audioClipsArray.Length)], position, volume);
+        AudioSource.PlayClipAtPoint(audioClipsArray[Random.Range(0, audioClipsArray.Length)], position, soundVolume);
     }
-    private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 2.0f)
+    private void PlaySound(AudioClip audioClip, Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(audioClip, position, volume);
+        AudioSource.PlayClipAtPoint(audioClip, position, soundVolume);
     }
 
-    public void PlayFootStepsSound(Vector3 position,float volume)
+    public void PlayFootStepsSound(Vector3 position)
     {
-        PlaySound(audioClips.footStep, position, volume);
+        PlaySound(audioClips.footStep, position);
+    }
+
+    public void IncreaseVolume(float increment) {
+        soundVolume = Mathf.Min(soundVolume + soundVolumeMax * increment, soundVolumeMax);
+        PlayerPrefs.SetFloat("soundVolume",soundVolume);
+    }
+    public void DecreaseVolume(float increment) {
+        soundVolume = Mathf.Max(soundVolume - soundVolumeMax * increment, 0f);
+        PlayerPrefs.SetFloat("soundVolume", soundVolume);
+    }
+    public float GetVolumeNormalized() {
+        Debug.Log(soundVolume);
+        return soundVolume / soundVolumeMax;
     }
 }

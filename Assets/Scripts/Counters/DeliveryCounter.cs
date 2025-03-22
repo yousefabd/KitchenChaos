@@ -24,6 +24,9 @@ public class DeliveryCounter : BaseCounter
     {
         Instance = this;
         orderSO = ScriptableObject.CreateInstance<OrderSO>();
+    }
+    private void Start() 
+    {
         Orders.Instance.ClearOrders();
     }
     private void Update()

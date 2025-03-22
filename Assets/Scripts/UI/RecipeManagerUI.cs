@@ -26,7 +26,6 @@ public class RecipeManagerUI : MonoBehaviour
 
     private void OrdersObj_OnAddOrder()
     {
-        Debug.Log(this == null);
         UpdateVisuals();
     }
     private void UpdateVisuals() {
